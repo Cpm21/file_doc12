@@ -1,0 +1,41 @@
+
+
+//ZOOKEEPER START
+D:\BigDataLocalSetup\kafka\bin>D:\BigDataLocalSetup\kafka\bin\windows\zookeeper-server-start.bat D:\BigDataLocalSetup\kafka\config\zookeeper.properties
+
+//KAFKA SERVEF START
+
+D:\BigDataLocalSetup\kafka>D:\BigDataLocalSetup\kafka\bin\windows\kafka-server-start.bat D:\BigDataLocalSetup\kafka\config\server.properties
+
+
+
+Step 1: Create a Topic
+bash
+Copy code
+D:\BigDataLocalSetup\kafka\bin\windows\kafka-topics.bat --create --topic my_topic --bootstrap-server localhost:9092 --partitions 1 --replication-factor 1
+Output:
+
+Copy code
+Created topic my_topic.
+Step 2: Produce Messages to the Topic
+bash
+Copy code
+D:\BigDataLocalSetup\kafka\bin\windows\kafka-console-producer.bat --topic my_topic --bootstrap-server localhost:9092
+Input (your messages):
+
+bash
+Copy code
+Hello Kafka
+This is a test message
+Another message
+Step 3: Consume Messages from the Topic
+bash
+Copy code
+D:\BigDataLocalSetup\kafka\bin\windows\kafka-console-consumer.bat --topic my_topic --bootstrap-server localhost:9092 --from-beginning
+Output (consumed messages):
+
+bash
+Copy code
+Hello Kafka
+This is a test message
+Another message
